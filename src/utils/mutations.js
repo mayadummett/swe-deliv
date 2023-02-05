@@ -1,8 +1,7 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from './firebase';
 
-//  Importing Firebase's UpdateDoc() method for the purpose of editing entries
-import { doc, updateDoc } from "firebase/firestore";
+
 
 // Functions for database mutations
 
@@ -42,4 +41,6 @@ export async function updateEntry(entry) {
 
 export async function deleteEntry(entry) {
    // TODO: Create Mutation to Delete Entry
+   await deleteDoc(doc(db, "entries", entry.id));
+
 }
