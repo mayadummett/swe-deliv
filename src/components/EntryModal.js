@@ -13,7 +13,6 @@ import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import { useState } from 'react';
 import { categories } from '../utils/categories';
-import { need } from '../utils/need';
 import { addEntry, updateEntry, deleteEntry } from '../utils/mutations';
 
 
@@ -38,8 +37,6 @@ export default function EntryModal({ entry, type, user }) {
    const [link, setLink] = useState(entry.link);
    const [description, setDescription] = useState(entry.description);
    const [category, setCategory] = React.useState(entry.category);
-   const [need, setNeed] = React.useState(entry.need);
-
 
    // Modal visibility handlers
 
@@ -49,7 +46,6 @@ export default function EntryModal({ entry, type, user }) {
       setLink(entry.link);
       setDescription(entry.description);
       setCategory(entry.category);
-      setNeed(entry.need);
    };
 
    const handleClose = () => {
@@ -65,7 +61,6 @@ export default function EntryModal({ entry, type, user }) {
          description: description,
          user: user?.displayName ? user?.displayName : "GenericUser",
          category: category,
-         need: need,
          userid: user?.uid,
       };
 
@@ -81,7 +76,6 @@ export default function EntryModal({ entry, type, user }) {
          link: link,
          description: description,
          category: category,
-         need: need,
          id: entry.id, 
       };
 
@@ -97,7 +91,6 @@ export default function EntryModal({ entry, type, user }) {
          link: link,
          description: description,
          category: category,
-         need: need,
          id: entry.id, 
       };
 
@@ -172,22 +165,6 @@ export default function EntryModal({ entry, type, user }) {
                   value={description}
                   onChange={(event) => setDescription(event.target.value)}
                />
-
-               {/* Implementing a New Feature */}
-               <FormControl fullWidth sx={{ "margin-top": 20 }}>
-                  <InputLabel id="demo-simple-select-label-2">Organizational Need</InputLabel>
-                  <Select
-                     labelId="demo-simple-select-label-2"
-                     id="demo-simple-select-2"
-                     value={need}
-                     label="Need"
-                     onChange={(event) => setNeed(event.target.value)}
-                  >
-                     {need.map((need) => (<MenuItem value={need.id}>{need.name}</MenuItem>))}
-                  </Select>
-               </FormControl>
-               
-               {/* End of Implementing a New Feature */}
 
                <FormControl fullWidth sx={{ "margin-top": 20 }}>
                   <InputLabel id="demo-simple-select-label">Category</InputLabel>
