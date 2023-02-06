@@ -124,7 +124,7 @@ export default function EntryModal({ entry, type, user }) {
    const actionButtons =
       type === "edit" ?
          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleClose} variant="outlined" color="error">Cancel</Button>
             <Button onClick={handleEdit}>Edit</Button>
             <Button onClick={handleDelete}>Delete</Button>
          </DialogActions>
@@ -188,7 +188,7 @@ export default function EntryModal({ entry, type, user }) {
 
                {/* Implementation of new feature regarding organizational need */}
                <FormControl fullWidth sx={{ "margin-top": 20 }}>
-                  <InputLabel id="demo-simple-select-label-2">Organizational Need</InputLabel>
+                  <InputLabel id="demo-simple-select-label-2">Org Need</InputLabel>
                   <Select
                      labelId="demo-simple-select-label-2"
                      id="demo-simple-select-2"
@@ -196,7 +196,7 @@ export default function EntryModal({ entry, type, user }) {
                      label="Need"
                      onChange={(event) => setNeed(event.target.value)}
                   >
-                     {needs.map((need) => (<MenuItem value={need.id}>{need.name}</MenuItem>))}
+                     {needs.map((need) => (<MenuItem value={need.id}>{need.need}</MenuItem>))}
                   </Select>
                </FormControl>
                {/* End of Implementation */}
